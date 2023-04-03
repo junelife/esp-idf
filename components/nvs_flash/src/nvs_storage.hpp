@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2015-2022 Espressif Systems (Shanghai) CO LTD
+ * SPDX-FileCopyrightText: 2015-2023 Espressif Systems (Shanghai) CO LTD
  *
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -126,6 +126,8 @@ public:
     esp_err_t calcEntriesInNamespace(uint8_t nsIndex, size_t& usedEntries);
 
     bool findEntry(nvs_opaque_iterator_t*, const char* name);
+
+    bool findEntryNs(nvs_opaque_iterator_t*, uint8_t nsIndex);
 
     bool nextEntry(nvs_opaque_iterator_t* it);
 
