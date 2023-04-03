@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2015-2022 Espressif Systems (Shanghai) CO LTD
+ * SPDX-FileCopyrightText: 2015-2023 Espressif Systems (Shanghai) CO LTD
  *
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -69,9 +69,13 @@ public:
 
     bool findEntry(nvs_opaque_iterator_t *it, const char *name);
 
+    bool findEntryNs(nvs_opaque_iterator_t *it);
+
     bool nextEntry(nvs_opaque_iterator_t *it);
 
     const char *get_partition_name() const;
+
+    Storage *get_storage() const;
 
 private:
     /**
