@@ -231,7 +231,10 @@ UBaseType_t uxTaskGetSnapshotAll( TaskSnapshot_t * const pxTaskSnapshotArray, co
         pxCurTaskList = pxGetNextTaskList(pxCurTaskList);
     }
 
-    *pxTCBSize = sizeof(TCB_t);
+    if (pxTCBSize != NULL) {
+        *pxTCBSize = sizeof( TCB_t );
+    }
+
     return uxArrayNumFilled;
 }
 #endif // CONFIG_FREERTOS_ENABLE_TASK_SNAPSHOT
