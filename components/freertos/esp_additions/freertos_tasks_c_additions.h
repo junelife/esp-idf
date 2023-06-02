@@ -1088,7 +1088,10 @@ UBaseType_t uxTaskGetSnapshotAll( TaskSnapshot_t * const pxTaskSnapshotArray,
         uxArrayNumFilled++;
     }
 
-    *pxTCBSize = sizeof( TCB_t );
+    if (pxTCBSize != NULL) {
+        *pxTCBSize = sizeof( TCB_t );
+    }
+
     return uxArrayNumFilled;
 }
 /*----------------------------------------------------------*/
