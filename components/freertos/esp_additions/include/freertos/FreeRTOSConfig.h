@@ -278,6 +278,8 @@
     #endif /* CONFIG_FREERTOS_CHECK_MUTEX_GIVEN_BY_OWNER */
 #endif /* !CONFIG_FREERTOS_SMP */
 
+#define configNUMBER_OF_CORES                configNUM_CORES
+    
 /* ------------------------------------------------ ESP-IDF Additions --------------------------------------------------
  * - Any other macros required by the rest of ESP-IDF
  * ------------------------------------------------------------------------------------------------------------------ */
