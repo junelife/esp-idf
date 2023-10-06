@@ -680,6 +680,10 @@ HEAP_IRAM_ATTR void *heap_caps_aligned_alloc(size_t alignment, size_t size, uint
         return NULL;
     }
 
+    if (malloc_alwaysinternal_limit==MALLOC_DISABLE_EXTERNAL_ALLOCS || size <= (size_t)malloc_alwaysinternal_limit) ) {
+        caps |= MALLOC_CAP_INTERNAL;
+    }
+
     for (int prio = 0; prio < SOC_MEMORY_TYPE_NO_PRIOS; prio++) {
         //Iterate over heaps and check capabilities at this priority
         heap_t *heap;
