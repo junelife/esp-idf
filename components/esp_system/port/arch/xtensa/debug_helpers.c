@@ -81,7 +81,7 @@ esp_err_t IRAM_ATTR esp_backtrace_print_from_frame(int depth, const esp_backtrac
                        (esp_ptr_executable((void *)esp_cpu_process_stack_pc(stk_frame.pc)) ||
         /*whitelist*/   esp_cpu_process_stack_pc(stk_frame.pc) == 0x400559DD ||         
                         /* Ignore the first corrupted PC in case of InstrFetchProhibited */
-                        (stk_frame.exc_frame && ((XtExcFrame *)stk_frame.exc_frame)->exccause == EXCCAUSE_INSTR_PROHIBITED)));
+                        (stk_frame.exc_frame /* && ((XtExcFrame *)stk_frame.exc_frame)->exccause == EXCCAUSE_INSTR_PROHIBITED */)));
 
     uint32_t i = (depth <= 0) ? INT32_MAX : depth;
     while (i-- > 0 && stk_frame.next_pc != 0 && !corrupted) {
