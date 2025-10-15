@@ -20,3 +20,6 @@ construct
 
 # gdb extensions dependencies
 freertos_gdb
+
+# Dependency restriction for ESP-IDF version v5.1.4-weber
+schema<=0.7.7
