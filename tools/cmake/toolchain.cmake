@@ -10,7 +10,11 @@ get_filename_component(_idf_toolchain_dir "$ENV{IDF_PATH}/tools/cmake" REALPATH)
 file(TO_CMAKE_PATH "${_idf_toolchain_dir}" _idf_toolchain_dir)
 
 get_filename_component(_toolchain_filename "${CMAKE_TOOLCHAIN_FILE}" NAME)
-get_filename_component(_current_toolchain_dir "${CMAKE_TOOLCHAIN_FILE}" DIRECTORY REALPATH)
+get_filename_component(_current_toolchain_dir "${CMAKE_TOOLCHAIN_FILE}" DIRECTORY)
+# Weber: resolve symlinks in a separate step; get_filename_component() applies only one mode,
+# so DIRECTORY REALPATH never resolved them and a toolchain file reached through a symlinked
+# path (macOS /tmp -> /private/tmp) took the external-project branch on the first run.
+get_filename_component(_current_toolchain_dir "${_current_toolchain_dir}" REALPATH)
 file(TO_CMAKE_PATH "${_current_toolchain_dir}" _current_toolchain_dir)
 
 set(CMAKE_SYSTEM_NAME Generic)
